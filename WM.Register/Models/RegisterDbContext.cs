@@ -1,4 +1,8 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
+using System.Web;
 
 namespace WM.Register.Models
 {
@@ -6,7 +10,7 @@ namespace WM.Register.Models
     {
         public RegisterDbContext() : base("name = RegisterDbContext")
         {
-            var instance = System.Data.Entity.SqlServer.SqlProviderServices.Instance;
+
         }
         //public virtual DbSet<srv_VNOGateWay_Merchant> mc_merchantss { get; set; }
     }

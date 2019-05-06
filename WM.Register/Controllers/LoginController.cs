@@ -1,12 +1,10 @@
 ﻿using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Net.Configuration;
 using System.Net.Mail;
-using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
@@ -100,8 +98,6 @@ namespace WM.Register.Controllers
         }
         public ActionResult ForgotPassword()
         {
-
-
             return View();
         }
 
@@ -166,15 +162,6 @@ namespace WM.Register.Controllers
             {
                 throw new SmtpException(SmtpStatusCode.UserNotLocalTryAlternatePath, "mail người nhận không tồn tại!: " + e);
             }
-        }
-
-        [HttpPost]
-        [AllowAnonymous]
-        [ValidateAntiForgeryToken]
-        public ActionResult ForgotPassword(srv_VNOGateWay_Merchant model)
-        {
-            Guid.NewGuid();
-            return View(model);
         }
     }
 }

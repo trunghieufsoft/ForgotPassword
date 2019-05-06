@@ -11,13 +11,12 @@ namespace WM.Register.DAO
 {
     public class StoreProceduce
     {
+       
         //Hien thi danh sach merchant
-        public static IEnumerable<srv_VNOGateWay_Merchant> ListAllMerchant()
-        {
-            return
-                new RegisterDbContext().Database.SqlQuery<srv_VNOGateWay_Merchant>("SELECT * FROM dbo.srv_VNOGateWay_Merchant").ToList();
+        public static IEnumerable<srv_VNOGateWay_Merchant> ListAllMerchant(){
+            var list = new RegisterDbContext().Database.SqlQuery<srv_VNOGateWay_Merchant>("SELECT * FROM dbo.srv_VNOGateWay_Merchant").ToList();
+            return list;
         }
-
         //Them moi mot merchant
         public static List<srv_VNOGateWay_Merchant> InsertMerchant(srv_VNOGateWay_Merchant srv_VNOGateWay_Merchant)
         {
@@ -106,12 +105,15 @@ namespace WM.Register.DAO
         }
         //Lay ra mot merchant
         public static srv_VNOGateWay_Merchant GetMerchantById(int? id)
-            => new RegisterDbContext()
-            .Database.SqlQuery<srv_VNOGateWay_Merchant>("exec [dbo].[GetByIdsrv_VNOGateWay_Merchant] @id = " + id).FirstOrDefault();
-
+        {
+            var getById = new RegisterDbContext().Database.SqlQuery<srv_VNOGateWay_Merchant>("exec [dbo].[GetByIdsrv_VNOGateWay_Merchant] @id = " + id).FirstOrDefault();
+            return getById;
+        }    
         //Hien thi danh sach transaction theo merchant_id
         public static List<srv_VNOGateway_transactions> ListTransactionByMerchantId(srv_VNOGateway_transactions srv_VNOGateway_transactions)
-            => new RegisterDbContext()
-            .Database.SqlQuery<srv_VNOGateway_transactions>("exec getTransactionByMerchantId @merchant_id ", new SqlParameter("merchant_id", srv_VNOGateway_transactions.merchant_id)).ToList();
+        {
+            var list = new RegisterDbContext().Database.SqlQuery<srv_VNOGateway_transactions>("exec getTransactionByMerchantId @merchant_id ", new SqlParameter("merchant_id", srv_VNOGateway_transactions.merchant_id)).ToList();
+            return list;
+        }
     }
 }
