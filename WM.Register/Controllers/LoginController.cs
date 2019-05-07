@@ -105,7 +105,15 @@ namespace WM.Register.Controllers
         public JsonResult SendForgotPassword(string username, string email)
         {
             string resetTitle = "Password Reset";
-            string resetTemplate = "Dear {fullName} <br><br><br>Your password has been successfully reset. <br> The new password is: {password} <br>Please change your password after the first log in.<br><br><br>Sincerely,<br>Administrator<br><i>Note: This is an auto-generated email, please do not reply.</i>";
+            string resetTemplate = 
+                "Dear {fullName} " +
+                "<br><br><br>" +
+                "Your password has been successfully reset. <br> " +
+                "The new password is: {password} <br>Please change your password after the first log in." +
+                "<br><br><br>" +
+                "Sincerely,<br>" +
+                "Administrator<br>" +
+                "<i>Note: This is an auto-generated email, please do not reply.</i>";
             IQueryable<srv_VNOGateWay_Merchant> list = StoreProceduce.ListAllMerchant().AsQueryable();
             srv_VNOGateWay_Merchant account = list.Where(x => x.merchant_email.Equals(email)).FirstOrDefault();
 
